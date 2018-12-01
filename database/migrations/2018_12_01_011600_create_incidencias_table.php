@@ -21,6 +21,8 @@ class CreateIncidenciasTable extends Migration
             $table->unsignedInteger('medio_pago_id')->nullable();
             $table->foreign('medio_pago_id')->references('id')->on('medio_pagos');
             $table->unsignedInteger('monto')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

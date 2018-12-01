@@ -3,6 +3,7 @@
 namespace MyControl\Http\Controllers;
 
 use Illuminate\Http\Request;
+use MyControl\Incidencia;
 
 class HomeController extends Controller
 {
@@ -21,8 +22,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('home');
+    public function index() {
+
+        $incidencias = Incidencia::all();
+
+        //return $incidencias->medioPago->nombre;
+
+        return view('index', compact('incidencias'));
     }
 }
