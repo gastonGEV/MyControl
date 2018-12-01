@@ -4,6 +4,7 @@ namespace MyControl\Http\Controllers;
 
 use Illuminate\Http\Request;
 use MyControl\Incidencia;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -24,9 +25,9 @@ class HomeController extends Controller
      */
     public function index() {
 
-        $incidencias = Incidencia::all();
+        $incidencias = Incidencia::where('user_id', Auth::id())->paginate(5);
 
-        //return $incidencias->medioPago->nombre;
+        //$incidencias->withPath('incidencias/url');
 
         return view('index', compact('incidencias'));
     }
