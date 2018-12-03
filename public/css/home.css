@@ -1,11 +1,110 @@
-#container-body {
-  margin-top: 45px;
+@media (min-width: 200px) and (max-width: 800px) {
+ 
+  #container-body {
+    margin-top: 2rem;
+    font-size: 1em;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .badge {
+    font-size: unset;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .toolbar {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: left;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.25em;
+  }
+
+  .div-toolbar{
+    width: 15%;
+    margin-right: 5px;
+  }
+
+  .label-toolbar {
+    width: 50%;
+  }
+  .txt-input{
+    text-align: center;
+    width: 50%;
+    margin-bottom: 5px;
+  }
+
+  .text {
+    font-size: .5em;
+  }
+  
+
+  .badge-pill {
+    padding-right: .3em;
+    padding-left: .3em;
+  }
+
 }
 
-.title {
-  text-align: center;
-}
+@media (min-width: 800px) {
 
-.badge {
-  font-size: unset;
+   #container-body {
+    margin-top: 2rem;
+    font-size: 1.25em;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .badge {
+    font-size: unset;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .toolbar {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: left;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.25em;
+  }
+
+  .div-toolbar{
+    width: 15%;
+    margin-right: 10px;
+  }
+
+  .txt-input{
+    text-align: center;
+    width: 90px;
+    margin-bottom: 5px;
+  }
+
+  table {
+    border-collapse: collapse;
+    border: 1px solid;
+    overflow: hidden;
+  }
+
+  .text {
+    font-size: .9em;
+  }
+
+  .badge-pill {
+    padding-right: .3em;
+    padding-left: .3em;
+  }
 }

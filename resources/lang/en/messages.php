@@ -20,4 +20,15 @@ return [
     //reset password
     'resetPassword' => 'Reset password',
     'sendPasswordResetLink' => 'Send password reset link',
+    //incidences table
+    'incidences' => 'Incidences',
+    'description' => 'Description',
+    'type' => 'Type',
+    'methodPage' => 'Method page',
+    'mount' => 'Mount',
+    'date' => 'Date',
+    'day' => 'Day',
+    'month' => 'Month',
+    'year' => 'Year',
+    'find' => 'Find',
 ];

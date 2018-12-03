@@ -6,38 +6,79 @@
 
 @section('content')
     <div id="container-body" class="container">
-        <h1 class="title">Tabla Incidencias</h1>
+        <h1 class="title">{{ __('messages.incidences'). ' diciembre' . ' 2018' }}</h1>
+        <form method="POST" action="{{ route('search') }}">
+            @csrf
+            <div class="toolbar">
+                <div class="div-toolbar">
+                    <label class="label-toolbar">{{ __('messages.day') }}:</label>
+                    <input class="txt-input{{ $errors->has('email') ? ' is-invalid' : '' }}" name="day" type="text" value="{{ old('day') }}" autocomplete="off">
+                    @if ($errors->has('email'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('day') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="div-toolbar">
+                    <label>{{ __('messages.month') }}:</label>
+                    <input class="txt-input{{ $errors->has('email') ? ' is-invalid' : '' }}" name="month" type="text" value="{{ old('month') }}" autocomplete="off">
+                    @if ($errors->has('email'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('month') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="div-toolbar">
+                    <label>{{ __('messages.year') }}:</label>
+                    <input class="txt-input{{ $errors->has('email') ? ' is-invalid' : '' }}" name="year" type="text" value="{{ old('year') }}" autocomplete="off">
+                     @if ($errors->has('email'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('year') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <button class="btn btn-dark" type="submit"> 
+                    {{ __('messages.find') }}
+                </button>
+            </div>
+        </form>
+
         <div class="table-responsive">
             <table class="table table-sm table-hover">
                 <thead class="thead-dark">
                     <tr>
-                        {{-- <th scope="col">ID</th> --}}
-                        <th scope="col">Descripcion</td>
-                        <th scope="col">Tipo</td>
-                        <th scope="col">MedioPago</td>
-                        <th scope="col">Monto</td>
-                        <th scope="col">Fecha</td>
+                        {{-- <th scope="col"><p>ID</p></th> --}}
+                        <th scope="col"><p class="text">{{ __('messages.description') }}</p></th>
+                        <th scope="col"><p class="text">{{ __('messages.type') }}</p></th>
+                        <th scope="col"><p class="text">{{ __('messages.methodPage') }}</p></th>
+                        <th scope="col"><p class="text">{{ __('messages.mount') }}</p></th>
+                        <th scope="col"><p class="text">{{ __('messages.date') }}</p></th>
                     </tr>
                 </thead>
                 <tbody>
                 @forelse ($incidencias as $incidencia)
                 <tr>
-                    {{-- <th scope="row">{{ $incidencia->id }}</td> --}}
-                    <td>{{ $incidencia->desc }}</td>
-                    <td>{{ $incidencia->tipo->nombre }}</td>
-                    <td>{{ $incidencia->medioPago->nombre }}</td>
+                    {{-- <th scope="row"><p>{{ $incidencia->id }}</p></td> --}}
+                    <td><p class="text">{{ $incidencia->desc }}</p></td>
+                    <td><p class="text">{{ $incidencia->tipo->nombre }}</p></td>
+                    <td><p class="text">{{ $incidencia->medioPago->nombre }}</p></td>
                     <td>
-                        $
                         @if ($incidencia->tipo_incidencia_id == 1)
-                            <span class="badge badge-pill badge-success">{{ $incidencia->monto }}</span>
+                            <span class="badge badge-pill badge-success"><p class="text">$ {{ $incidencia->monto }}</p></span>
                         @else
-                            <span class="badge badge-pill badge-danger">{{ $incidencia->monto }}</span>
+                            <span class="badge badge-pill badge-danger"><p class="text">$ {{ $incidencia->monto }}</p></span>
                         @endif 
                     </td>
-                    <td>{{ $incidencia->created_at }}</td>
+                    <td><p class="text">{{ $incidencia->created_at }}</p></td>
                 </tr>
                 @empty
-                    <td>No hay incidencias!</td>
+                <tr>
+                    <td><p class="text">No hay incidencias!</p></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
                 @endforelse
                 </tbody>
             </table>

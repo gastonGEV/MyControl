@@ -16,6 +16,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::post('/','HomeController@search')->name('search');
 
 //cambiar lang
 Route::get('locale/{locale}', function ($locale) {

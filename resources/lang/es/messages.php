@@ -20,5 +20,15 @@ return [
     //reset password
     'resetPassword' => 'Reiniciar contraseña',
     'sendPasswordResetLink' => 'Enviar link reinicio contraseña',
-
+    //incidences table
+    'incidences' => 'Incidencias',
+    'description' => 'Descripcion',
+    'type' => 'Tipo',
+    'methodPage' => 'Medio pago',
+    'mount' => 'Monto',
+    'date' => 'Fecha',
+    'day' => 'Día',
+    'month' => 'Mes',
+    'year' => 'Año',
+    'find' => 'Buscar',
 ];

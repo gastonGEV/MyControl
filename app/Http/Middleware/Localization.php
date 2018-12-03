@@ -25,7 +25,6 @@ class Localization
         else {
             $locale = Config::get('app.locale');
         } 
-        
         App::setLocale($locale);
         return $next($request);
     }
