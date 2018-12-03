@@ -56,6 +56,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                @if(isset($incidencias))
                 @forelse ($incidencias as $incidencia)
                 <tr>
                     {{-- <th scope="row"><p>{{ $incidencia->id }}</p></td> --}}
@@ -80,10 +81,12 @@
                     <td></td>
                 </tr>
                 @endforelse
+                @endif
                 </tbody>
             </table>
         </div>
        
+        {{-- @if(isset($incidencias))
         <nav aria-label="Search results pages">
             <ul class="pagination  pagination-sm justify-content-center">
                 <li class="page-item">
@@ -91,7 +94,7 @@
                 </li>
             </ul>
         </nav>
-        
+        @endif --}}
 
     
     </div>
