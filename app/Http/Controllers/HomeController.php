@@ -24,21 +24,20 @@ class HomeController extends Controller
 
         if (session('incidencias')) {
             //dd(session('incidencias'));
-            echo 'entra';
             $incidencias = session('incidencias');
-            return view('index', compact('incidencias'));
+        } else {
+            $now = Carbon::now();
+            //mes y año actual
+            $incidencias = Incidencia::whereYear('created_at', '=', date($now->year))
+                                        ->whereMonth('created_at', '=', date($now->month))
+                                        ->where('user_id', Auth::id())
+                                        // ->paginate(5);
+                                        ->get();
         }
 
-        // $now = Carbon::now();
-
-        // //mes y año actual
-        // $incidencias = Incidencia::whereYear('created_at', '=', date($now->year))
-        //                             ->whereMonth('created_at', '=', date($now->month))
-        //                             ->where('user_id', Auth::id())
-        //                             ->paginate(5);
-        // //dd($incidencias);
+        //dd($incidencias);
         
-        return view('index');
+        return view('index', compact('incidencias'));
     }
 
       /**
@@ -57,6 +56,8 @@ class HomeController extends Controller
                                     ->where('user_id', Auth::id())
                                     //->paginate(5);
                                     ->get();
+            $request['month'] = date($now->month);
+            $request['year'] = date($now->year);
         }
         //todos
         if ($request->filled('day') && $request->filled('month') && $request->filled('year')) {
@@ -116,7 +117,9 @@ class HomeController extends Controller
 
         //return redirect()->route('home', $incidencias);
        //return redirect()->action('HomeController@index', ['id' => 66]);
-       return redirect()->route('home')->with('incidencias', $incidencias);
+
+       //return $request->all();
+       return redirect()->route('home')->with('incidencias', $incidencias)->withInput();
        
 
     }

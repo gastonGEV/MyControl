@@ -6,7 +6,20 @@
 
 @section('content')
     <div id="container-body" class="container">
-        <h1 class="title">{{ __('messages.incidences'). ' diciembre' . ' 2018' }}</h1>
+        @if(count($incidencias) == 0)
+            <h1 class="title">{{ __('messages.incidences') }}</h1>
+        @else
+            <div>
+                <h1 class="title">{{ __('messages.incidences') }}:
+                @if (old('month') !== null)
+                    {{ date("F", mktime(0, 0, 0,  old('month') , 1 , 0 )) }}
+                @endif
+                @if (old('year') !==null)
+                    {{ date("Y", mktime(0, 0, 0, 1 , 1 , old('year') )) }} 
+                @endif 
+                </h1>
+            </div>
+        @endif
         <form method="POST" action="{{ route('search') }}">
             @csrf
             <div class="toolbar">
